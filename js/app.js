@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -6,6 +7,9 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y;
+    this.speed = //will give random number
 }
 
 // Update the enemy's position, required method for game
@@ -14,7 +18,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-}
+
+  //movement
+  if (this.x <= 505){
+    this.x = this.x + this.speed * dt;
+    } else {
+      this.x - 2;
+    }
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -25,11 +36,79 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+var Player = function() {
+  this.sprite = 'images/char-princess-girl.png'
+  this.x = smth
+  this.y = smth
+  this.render = function (){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+    };
+
+  //total mess - updating player with buttons
+  this.update = function() {
+    switch (?) {
+    case 'left':
+      if (x < 505) {
+        x = x - 101};
+        break;
+
+    case 'right':
+      if (x<404) {
+        x = x+101};
+        break;
+
+    case 'up':
+    if (y>0) {
+        y = y-83};
+        break;
+
+    case 'down':
+    if (y<606) {
+        y = y-83};
+        break;
+    };
+  };
+
+// copied from here: http://html5.litten.com/moving-shapes-on-the-html5-canvas-with-the-keyboard/
+  function doKeyDown(evt){
+    switch (evt.keyCode) {
+      case 38:  /* Up arrow was pressed */
+      if (y - dy > 0){
+        y -= dy;
+      }
+      break;
+      case 40:  /* Down arrow was pressed */
+      if (y + dy < HEIGHT){
+        y += dy;
+      }
+      break;
+      case 37:  /* Left arrow was pressed */
+      if (x - dx > 0){
+        x -= dx;
+      }
+      break;
+      case 39:  /* Right arrow was pressed */
+      if (x + dx < WIDTH){
+        x += dx;
+      }
+      break;
+    }
+  }
+
+/// mess is up to here
+
+  this.handleInput = function(){
+  };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 
+var allEnemies = [];
+ //something like? ==> var bug = new Enemy();
+}
+
+// Place the player object in a variable called player
+var player = new Player();
 
 
 // This listens for key presses and sends the keys to your
